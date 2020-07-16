@@ -6,14 +6,18 @@
 \packageTitle{symSEM}Symbolic Computation for Structural Equation Models
 }
 \description{
-Some functions of symbolic computation for structural equation models (SEM).
+  A collection of functions for symbolic computation using 'Ryacas'
+  package for structural equation models. This package includes
+  functions to calculate model-implied covariance (and correlation)
+  matrix and sampling covariance matrix of functions of variables using
+  the first-order Taylor approximation. Reference: McArdle and McDonald (1984) <doi:10.1111/j.2044-8317.1984.tb00802.x>.
 }
 \details{
 \tabular{ll}{
-Package: \tab metaSEM\cr
+Package: \tab symSEM\cr
 Type: \tab Package\cr
 Version: \tab 0.1\cr
-Date: \tab 2020-07-02\cr
+Date: \tab 2020-07-15\cr
 License: \tab GPL (>=2)\cr
 LazyLoad: \tab yes\cr
 }

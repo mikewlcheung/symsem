@@ -1,9 +1,9 @@
 \name{as.matrix}
 \alias{as.matrix}
 \alias{as.matrix.yac_symbol}
-\title{Convert an Ryacas Symbolic Matrix to a Character Matrix
+\title{Convert a Ryacas Symbolic Matrix to a Character Matrix
 }
-\description{It converts an Ryacas Symbolic Matrix to a Character Matrix
+\description{It converts a Ryacas Symbolic Matrix to a Character Matrix
   in R.
 }
 \usage{
@@ -31,7 +31,7 @@ A1 <- matrix(c(1, 2, 3, "a", "b", "c"), ncol=2, nrow=3)
 # [2,] "2"  "b" 
 # [3,] "3"  "c"
 
-## Convert it to an Ryacas matrix
+## Convert it to an Ryacas matrix for symbolic calculations
 A2 <- sym(A1)
 # {{1, a},
 #  {2, b},

@@ -1,9 +1,9 @@
 \name{impliedS}
 \alias{impliedS}
-\title{Compute a Symbolic Model Implied Covariance/Correlation Matrix
+\title{Compute a Symbolic Model-Implied Covariance/Correlation Matrix
 }
-\description{It computes a symbolic model implied covariance (or
-  correlation) matrices based on the RAM inputs.
+\description{It computes a symbolic model-implied covariance (or
+  correlation) matrix in SEM using the RAM inputs.
 }
 \usage{
 impliedS(RAM, corr=FALSE)
@@ -22,7 +22,7 @@ impliedS(RAM, corr=FALSE)
 }
 
 \examples{
-## A mediation model
+#### A mediation model
 model1 <- "y ~ c*x + b*m
            m ~ a*x
            ## Means
@@ -32,21 +32,21 @@ model1 <- "y ~ c*x + b*m
     
 RAM1 <- metaSEM::lavaan2RAM(model1)
 
-## Implied covariance matrix and mean structure
+## Model-implied covariance matrix and mean structure
 impliedS(RAM1, corr=FALSE)
 
-## Implied correlation matrix
+## Model-implied correlation matrix
 impliedS(RAM1, corr=TRUE)
 
-## A CFA model
+#### A CFA model
 model2 <- "f =~ x1 + x2 + x3 + x4"
     
 RAM2 <- metaSEM::lavaan2RAM(model2)
 
-## Implied covariance matrix
+## Model-implied covariance matrix
 impliedS(RAM2, corr=FALSE)
 
-## Implied correlation matrix
+## Model-implied correlation matrix
 impliedS(RAM2, corr=TRUE)
 }
 

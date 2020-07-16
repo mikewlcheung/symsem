@@ -1,8 +1,10 @@
 \name{deltamethod}
 \alias{deltamethod}
-\title{Compute the Variance-Covariance Matrix of Functions using the Delta Method
+\title{Compute the Variance-Covariance Matrix of Functions using the
+  first-order Delta Method
 }
-\description{It computes the variance-covariance matrix of functions using the delta method.
+\description{It computes the variance-covariance matrix of functions
+  using the first-order delta method.
 }
 \usage{
 deltamethod(fn, Covvars, vars, Var.name="V", Cov.name="C", simplify=TRUE) 
@@ -11,10 +13,11 @@ deltamethod(fn, Covvars, vars, Var.name="V", Cov.name="C", simplify=TRUE)
 \arguments{
   \item{fn}{A function in character strings or a vector of functions.}
   \item{Covvars}{Variance-covariance matrix of the variables.}
-  \item{vars}{A vector of characters of random variables.}
+  \item{vars}{A vector of characters of the random variables.}
   \item{Var.name}{Name of the variances.}
   \item{Cov.name}{Name of the covariances.}
-  \item{simplify}{Attempts to simpify the expression}
+  \item{simplify}{Attempts to simplify the expression. Please note that
+	it may not work well.}
 }  
 
 \value{Variance-covariance matrix of the functions. 
@@ -24,7 +27,7 @@ deltamethod(fn, Covvars, vars, Var.name="V", Cov.name="C", simplify=TRUE)
 }
 
 \examples{
-## Fisher-z-transformation
+#### Fisher-z-transformation
 fn  <- "0.5*log((1+r)/(1-r))"
 
 ## Sampling variance of r
@@ -50,7 +53,7 @@ deltamethod(fn=fn, Covvars=Covvars, vars="r")
 ##     r                                      
 ## fn1 "(0.5*(1-r+r+1)*(1-r))/((1-r)^2*(r+1))"
 
-## Raw mean difference: y_treatment - y_control
+#### Raw mean difference: y_treatment - y_control
 fn <- "yt - yc"
 
 ## Sampling covariance matrix
@@ -82,7 +85,7 @@ deltamethod(fn=fn, Covvars=Covvars, vars=c("yt", "yc"))
 ##     yt  yc  
 ## fn1 "1" "-1"
 
-## log(odds)
+#### log(odds)
 fn <- "log(p/(1-p))"
 
 ## Sampling variance of p

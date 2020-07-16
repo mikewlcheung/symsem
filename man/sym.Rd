@@ -2,11 +2,13 @@
 \alias{sym}
 \title{Convert a Character Expression to Ryacas Symbol or matrix
 }
-\description{It converts a Character Expression or Matrix in R to Ryacas symbolic expression or matrix.
+\description{It converts a Character Expression or Matrix in R to Ryacas
+  symbolic expression or matrix.
 }
 \details{It converts mathematic operators from R to mathematic operators
   in yacas and then uses \code{\link[Ryacas]{ysym}} to convert the R character expression or
-  matrix to Ryacas symbolic expression or matrix.
+  matrix to Ryacas symbolic expression or matrix. The Ryacas expression
+  or matrix can be used for further symbolic calculations.
  }
 \usage{
 sym(x)
