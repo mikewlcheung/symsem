@@ -34,9 +34,9 @@ test_that("as.matrix() works correctly", {
 test_that("impliedS() works correctly", {
 
     model1 <- "y ~ c*x + b*m
-               m ~ a*x
+               m ~ a_a*x
                x ~~ 1*x
-               y ~ b0*1
+               y ~ b_0*1
                m ~ m0*1
                x ~ x0*1"
     
@@ -45,9 +45,9 @@ test_that("impliedS() works correctly", {
     S1a <- impliedS(RAM1, corr=TRUE)
     S1b <- impliedS(RAM1, corr=FALSE)
 
-    R1a <- list(Sigma = structure(c("1", "a*c+b", "c+b*a",
-                                    "b+a*c", "1", "a",
-                                    "c+b*a", "a", "1"),
+    R1a <- list(Sigma = structure(c("1", "a_a*c+b", "c+b*a_a",
+                                    "b+a_a*c", "1", "a_a",
+                                    "c+b*a_a", "a_a", "1"),
                                   .Dim = c(3L, 3L),
                                   .Dimnames = list(c("y", "m", "x"),
                                                    c("y", "m", "x"))),
@@ -55,14 +55,14 @@ test_that("impliedS() works correctly", {
                                .Dim = c(1L, 3L),
                                .Dimnames = list("1", c("y", "m", "x"))),
                 corr = TRUE)
-    R1b <- list(Sigma = structure(c("yWITHy+mWITHm*b^2+(c+b*a)^2", "mWITHm*b+a*(c+b*a)", "c+b*a",
-                                    "b*mWITHm+(c+b*a)*a", "mWITHm+a^2", "a",
-                                    "c+b*a", "a", "1"),
+    R1b <- list(Sigma = structure(c("yWITHy+mWITHm*b^2+(c+b*a_a)^2", "mWITHm*b+a_a*(c+b*a_a)", "c+b*a_a",
+                                    "b*mWITHm+(c+b*a_a)*a_a", "mWITHm+a_a^2", "a_a",
+                                    "c+b*a_a", "a_a", "1"),
                                   .Dim = c(3L, 3L),
                                   .Dimnames = list(c("y", "m", "x"),
                                                    c("y", "m", "x"))),
-                mu = structure(c("b0+m0*b+x0*(c+b*a)",
-                                 "m0+x0*a","x0"),
+                mu = structure(c("b_0+m0*b+x0*(c+b*a_a)",
+                                 "m0+x0*a_a","x0"),
                                .Dim = c(1L, 3L),
                                .Dimnames = list("1", c("y", "m", "x"))),
                 corr = FALSE)

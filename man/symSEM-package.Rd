@@ -16,8 +16,8 @@
 \tabular{ll}{
 Package: \tab symSEM\cr
 Type: \tab Package\cr
-Version: \tab 0.1\cr
-Date: \tab 2020-07-15\cr
+Version: \tab 0.1.1\cr
+Date: \tab 2020-09-26\cr
 License: \tab GPL (>=2)\cr
 LazyLoad: \tab yes\cr
 }

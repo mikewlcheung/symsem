@@ -1,8 +1,8 @@
 Package: symSEM
 Type: Package
 Title: Symbolic Computation for Structural Equation Models  
-Version: 0.1
-Date: 2020-07-15
+Version: 0.1.1
+Date: 2020-09-26
 Depends: R (>= 3.3.0)
 Imports: OpenMx, metaSEM, Ryacas, mvtnorm
 Suggests: testthat

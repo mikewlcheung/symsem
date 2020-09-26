@@ -43,9 +43,9 @@ as.matrix.yac_symbol <- function(x, ...) {
         stop("\"x\" is not a class of \"yac_symbol\".\n")
     }
 
-    ## Remove all {}
-    z <- gsub("\\{|\\}", "", x$yacas_cmd)
-
+    ## Remove all {} and white spaces
+    z <- gsub("\\{|\\}|\\s", "", x$yacas_cmd)
+    
     ## Convert yacas to R math operators
     z <- .math.convert(z, r2yacas=FALSE)
 
