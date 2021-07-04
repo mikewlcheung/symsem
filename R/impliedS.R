@@ -20,7 +20,14 @@ impliedS <- function(RAM, corr=FALSE) {
     
     if (corr) {
 
-        ## F*S*t(S) rather than S
+        ## ## An alternative approach of standaridzation.
+        ## ## Error variances are included as parameters.
+        ## SD <- Ryacas::diag(SigmaLat)
+        ## SD <- 1/(sqrt(SD))
+        ## SD <- Ryacas::y_fn(SD, "DiagonalMatrix")
+        ## SigmaLat <- SD * SigmaLat * SD
+     
+        ## F*S*t(F) rather than S
         ## Index of error variances in the diagonals of S
         index <- suppressWarnings(which(is.na(as.numeric(diag(RAM1$S)))))
         Slabels <- diag(RAM1$S)[index]
@@ -28,16 +35,17 @@ impliedS <- function(RAM, corr=FALSE) {
         ## Assuming there are at least one free error variance in S including latent variables
         for (i in seq_along(index)) {
             j <- index[i]
-            ## sigmalat: diagonal including Error variance in S. It should be constrained as 1.
+            ## sigmalat: diagonals including Error variance in S with observed and latent variables. It should be constrained as 1.
             sigmalat <- paste0("Ryacas::yac_str(SigmaLat[",j,",",j,"])")
             sigmalat <- eval(parse(text=sigmalat))
             sigmalat <- gsub("\\s", "", sigmalat)
-            ## 1 + Err - (sigma): It will be 1 after simplification
+            ## 1 + ErrVar - (sigma): It will become 1 on the diagonals the after simplification.
+            ## For off-diagonal elements, the ErrVar are replaced by terms without ErrVar.
             SigmaLat$yacas_cmd <- gsub(Slabels[i],
                                        paste0("(1+", Slabels[i], "-(", sigmalat, "))"),
                                        SigmaLat$yacas_cmd)
         }
-
+        
         SigmaLat <- Ryacas::simplify(SigmaLat)
         SigmaLat$yacas_cmd <- gsub("\\s", "", SigmaLat$yacas_cmd)
         mu <- matrix(0, nrow=1, ncol=nrow(RAM$F))

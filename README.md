@@ -1,4 +1,5 @@
-[![Build Status](https://travis-ci.org/mikewlcheung/symsem.svg?branch=master)](https://travis-ci.com/github/mikewlcheung/symsem)
+[![R build status](https://github.com/mikewlcheung/symsem/workflows/R-CMD-check/badge.svg)](https://github.com/mikewlcheung/symsem/actions)
+[![Build Status](https://www.travis-ci.com/mikewlcheung/symsem.svg?branch=master)](https://www.travis-ci.com/mikewlcheung/symsem)
 [![cran version](http://www.r-pkg.org/badges/version/symSEM)](https://cran.r-project.org/package=symSEM)
 [![Monthly Downloads](http://cranlogs.r-pkg.org/badges/symSEM)](http://cranlogs.r-pkg.org/badges/symSEM)
 [![Total Downloads](http://cranlogs.r-pkg.org/badges/grand-total/symSEM)](http://cranlogs.r-pkg.org/badges/grand-total/symSEM)
@@ -6,6 +7,20 @@
 
 # symSEM
 Symbolic Computation for Structural Equation Models
+
+The stable version can be installed from CRAN by:
+```
+install.packages("symSEM")
+```
+
+The developmental version can be installed from GitHub by:
+```
+## Install remotes package if it has not been installed yet
+# install.packages("remotes")
+
+remotes::install_github("mikewlcheung/symsem")
+```
+
 
 # Example
 
