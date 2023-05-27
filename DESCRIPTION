@@ -1,20 +1,23 @@
 Package: symSEM
 Type: Package
 Title: Symbolic Computation for Structural Equation Models  
-Version: 0.1.1
-Date: 2020-09-26
-Depends: R (>= 3.3.0)
-Imports: OpenMx, metaSEM, Ryacas, mvtnorm
-Suggests: testthat
+Version: 0.2
+Date: 2023-05-27
+Depends: caracas
+Imports: OpenMx, metaSEM
+Suggests: testthat, roxygen2
 Authors@R: person(given = "Mike", family = "Cheung", role = c("aut","cre"), email = "mikewlcheung@nus.edu.sg", comment = c(ORCID = "0000-0003-0113-0758")) 
 Maintainer: Mike Cheung <mikewlcheung@nus.edu.sg>
-Description: A collection of functions for symbolic computation using 'Ryacas'
-  package for structural equation models. This package includes
-  functions to calculate model-implied covariance (and correlation)
-  matrix and sampling covariance matrix of functions of variables using
-  the first-order Taylor approximation. Reference: McArdle and McDonald (1984) <doi:10.1111/j.2044-8317.1984.tb00802.x>.
+Description: A collection of functions for symbolic computation using the
+			 'caracas' package for structural equation models and other
+			 statistical analyses. Among its features is the ability
+			 to calculate the model-implied covariance (and correlation)
+			 matrix and the sampling covariance matrix of variable functions
+			 using the delta method.
 License: GPL (>=2)
+Encoding: UTF-8
 LazyLoad: yes
 LazyData: yes
 ByteCompile: yes
 URL: https://github.com/mikewlcheung/symsem
+RoxygenNote: 7.2.3

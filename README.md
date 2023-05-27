@@ -8,6 +8,8 @@
 # symSEM
 Symbolic Computation for Structural Equation Models
 
+The symSEM package uses the [caracas](https://cran.r-project.org/package=caracas) package, which depends on the [SymPy](https://www.sympy.org/) library, for the symbolic computations.
+
 The stable version can be installed from CRAN by:
 ```
 install.packages("symSEM")

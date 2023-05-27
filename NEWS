@@ -1,7 +1,11 @@
+Release 0.2 (May 27, 2023)
+====================================
+* Change the backend from Ryacas to caracas.
+
 Release 0.1.1 (Sep 26, 2020)
 ====================================
-* Fixed impliedS() to work with "_" character in RAM.
+* Fix impliedS() to work with "_" character in RAM.
 
 Release 0.1 (Jul 16, 2020)
 ====================================
-* Released to CRAN.
+* Release to CRAN.
