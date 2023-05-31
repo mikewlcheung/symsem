@@ -1,3 +1,6 @@
+## Skip the tests in cran as it is difficult to install the required environments, such as python and sympy.
+skip_on_cran()
+
 test_that("impliedS() works correctly", {
 
     model1 <- "y ~ c*x + b*m

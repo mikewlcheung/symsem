@@ -1,9 +1,8 @@
 [![R build status](https://github.com/mikewlcheung/symsem/workflows/R-CMD-check/badge.svg)](https://github.com/mikewlcheung/symsem/actions)
-[![Build Status](https://www.travis-ci.com/mikewlcheung/symsem.svg?branch=master)](https://www.travis-ci.com/mikewlcheung/symsem)
 [![cran version](http://www.r-pkg.org/badges/version/symSEM)](https://cran.r-project.org/package=symSEM)
-[![Monthly Downloads](http://cranlogs.r-pkg.org/badges/symSEM)](http://cranlogs.r-pkg.org/badges/symSEM)
-[![Total Downloads](http://cranlogs.r-pkg.org/badges/grand-total/symSEM)](http://cranlogs.r-pkg.org/badges/grand-total/symSEM)
-[![Rdoc](http://www.rdocumentation.org/badges/version/symSEM)](http://www.rdocumentation.org/packages/symSEM)
+[![Monthly Downloads](http://cranlogs.r-pkg.org/badges/symSEM)](https://cranlogs.r-pkg.org/badges/symSEM)
+[![Total Downloads](http://cranlogs.r-pkg.org/badges/grand-total/symSEM)](https://cranlogs.r-pkg.org/badges/grand-total/symSEM)
+[![Rdoc](http://www.rdocumentation.org/badges/version/symSEM)](https://www.rdocumentation.org/packages/symSEM)
 
 # symSEM
 Symbolic Computation for Structural Equation Models

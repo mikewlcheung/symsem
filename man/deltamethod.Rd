@@ -31,6 +31,7 @@ It computes the variance-covariance matrix of functions using the
 first-order delta method.
 }
 \examples{
+\dontrun{
 
 #### Fisher-z-transformation
 fn  <- "0.5*log((1+r)/(1-r))"
@@ -116,7 +117,7 @@ deltamethod(fn=fn, Covvars=Covvars, vars="p")
 ## $Jmatrix
 ##     p
 ## fn1 "((1-p+p)*(1-p))/((1-p)^2*p)"
-
+}
 }
 \author{
 Mike W.-L. Cheung <mikewlcheung@nus.edu.sg>

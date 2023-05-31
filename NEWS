@@ -1,6 +1,7 @@
-Release 0.2 (May 27, 2023)
+Release 0.2 (May 31, 2023)
 ====================================
-* Change the backend from Ryacas to caracas.
+* Release to CRAN.
+* Change the backend from Ryacas to caracas, add oxygen2.
 
 Release 0.1.1 (Sep 26, 2020)
 ====================================

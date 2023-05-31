@@ -2,7 +2,7 @@ Package: symSEM
 Type: Package
 Title: Symbolic Computation for Structural Equation Models  
 Version: 0.2
-Date: 2023-05-27
+Date: 2023-05-31
 Depends: caracas
 Imports: OpenMx, metaSEM
 Suggests: testthat, roxygen2
@@ -16,6 +16,7 @@ Description: A collection of functions for symbolic computation using the
 			 using the delta method.
 License: GPL (>=2)
 Encoding: UTF-8
+SystemRequirements: Python (>= 3.6.0)
 LazyLoad: yes
 LazyData: yes
 ByteCompile: yes

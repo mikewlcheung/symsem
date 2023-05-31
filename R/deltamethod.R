@@ -21,7 +21,8 @@
 #' @author Mike W.-L. Cheung <mikewlcheung@@nus.edu.sg>
 #' @export
 #' @examples
-#'
+#' \dontrun{
+#' 
 #' #### Fisher-z-transformation
 #' fn  <- "0.5*log((1+r)/(1-r))"
 #'
@@ -106,7 +107,7 @@
 #' ## $Jmatrix
 #' ##     p
 #' ## fn1 "((1-p+p)*(1-p))/((1-p)^2*p)"
-#'
+#' }
 deltamethod <- function(fn, Covvars, vars, Var.name="V", Cov.name="C",
                         simplify=TRUE) {
     

@@ -12,7 +12,8 @@
 #' @author Mike W.-L. Cheung <mikewlcheung@@nus.edu.sg>
 #' @export
 #' @examples
-#'
+#' \dontrun{
+#' 
 #' #### A mediation model
 #' model1 <- "y ~ c*x + b*m
 #'            m ~ a*x
@@ -41,7 +42,7 @@
 #'
 #' ## Model-implied correlation matrix
 #' impliedS(RAM2, corr=TRUE)
-#'
+#' }
 impliedS <- function(RAM, corr=FALSE, simplify=TRUE) {
     ## Remove starting values and "*" in RAM
     RAM1 <- metaSEM::as.symMatrix(RAM)

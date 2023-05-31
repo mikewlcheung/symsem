@@ -1,3 +1,6 @@
 .travis.yml
 .gitignore
 .git
+symsem.Rproj
+^.*\.Rproj$
+^\.Rproj\.user$
