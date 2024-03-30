@@ -4,7 +4,7 @@
 \alias{impliedS}
 \title{Compute a Symbolic Model-Implied Covariance/Correlation Matrix}
 \usage{
-impliedS(RAM, corr = FALSE, simplify = TRUE)
+impliedS(RAM, corr = FALSE, replace.constraints = FALSE, convert = TRUE)
 }
 \arguments{
 \item{RAM}{A RAM object including a list of matrices of the model returned
@@ -13,14 +13,21 @@ from \code{\link[metaSEM]{lavaan2RAM}}}
 \item{corr}{Whether the model implied matrix is covariance (default) or
 correlation structure.}
 
-\item{simplify}{Attempt to simplify the output.}
+\item{replace.constraints}{Whether to replace the parameters with the constraints
+in the \code{mxalgebras} slot. Suppose the formula is \code{para1==para2+para3},
+\code{para1} will be replaced by \code{para2+para3} if this argument is \code{TRUE}.}
+
+\item{convert}{Whether to convert random strings back to parameters. For internal
+use only. Users unlikely need to use this argument.}
 }
 \value{
-The model implied covariance (or correlation) matrix and means vector.
+A list of object with class \code{implieS}. It stores the A, S, and F
+matrices and the model implied covariance (or correlation) matrix and the
+vector of the means.
 }
 \description{
 It computes a symbolic model-implied covariance (or correlation) matrix in
-SEM using the RAM inputs.
+SEM using the RAM specification inputs.
 }
 \examples{
 \dontrun{
@@ -42,7 +49,7 @@ impliedS(RAM1, corr=FALSE)
 impliedS(RAM1, corr=TRUE)
 
 #### A CFA model
-model2 <- "f =~ x1 + x2 + x3 + x4#'
+model2 <- "f =~ x1 + x2 + x3 + x4
            ## Mean
            f ~ fmean*1"
 

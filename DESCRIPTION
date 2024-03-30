@@ -1,8 +1,8 @@
 Package: symSEM
 Type: Package
 Title: Symbolic Computation for Structural Equation Models  
-Version: 0.2
-Date: 2023-05-31
+Version: 0.4
+Date: 2024-02-10
 Depends: caracas
 Imports: OpenMx, metaSEM
 Suggests: testthat, roxygen2
@@ -21,4 +21,4 @@ LazyLoad: yes
 LazyData: yes
 ByteCompile: yes
 URL: https://github.com/mikewlcheung/symsem
-RoxygenNote: 7.2.3
+RoxygenNote: 7.3.1

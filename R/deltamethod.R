@@ -9,8 +9,10 @@
 #'
 #'
 #' @param fn A function in character strings or a vector of functions.
-#' @param Covvars Variance-covariance matrix of the variables. If it is not
-#' specified, they are automatically generated.
+#' @param Covvars Variance-covariance matrix of the variables. Users must
+#' ensure the order of variables is the same as that in \code{vars}; 
+#' Otherwise, the results are likely incorrect. If it is not specified,
+#' they are automatically generated.
 #' @param vars A vector of characters of the random variables. If the random
 #' variables are not listed in `vars`, they are treated as constants. If `vars`
 #' is missing, all names in `RAM` are treated as random variables.
@@ -21,7 +23,6 @@
 #' @author Mike W.-L. Cheung <mikewlcheung@@nus.edu.sg>
 #' @export
 #' @examples
-#' \dontrun{
 #' 
 #' #### Fisher-z-transformation
 #' fn  <- "0.5*log((1+r)/(1-r))"
@@ -107,59 +108,58 @@
 #' ## $Jmatrix
 #' ##     p
 #' ## fn1 "((1-p+p)*(1-p))/((1-p)^2*p)"
-#' }
 deltamethod <- function(fn, Covvars, vars, Var.name="V", Cov.name="C",
                         simplify=TRUE) {
     
-    ## Univariate or multivariate
-    fn.p <- length(fn)
+  ## Univariate or multivariate
+  fn.p <- length(fn)
+  
+  ## function names
+  fn.names <- paste0("fn", seq_len(fn.p))
+  
+  ## convert it to a column vector
+  fn <- matrix(fn, ncol=1)
+  rownames(fn) <- fn.names
 
-    ## function names
-    fn.names <- paste0("fn", seq_len(fn.p))
-
-    ## convert it to a column vector
-    fn <- matrix(fn, ncol=1)
-    rownames(fn) <- fn.names
-
-    fn.S <- as_sym(fn)
-
-    ## Get the variable names
-    varlist <- sort(unique(all.names(parse(text=fn), functions=FALSE)))
-    if (missing(vars)) {
-        vars <- varlist
-    } else {
-        if (any(!vars %in% varlist)) {
-            stop("Some of \"vars\" do not agree with the names in \"fn\".\n")
-        }
+  fn.S <- as_sym(fn)
+  
+  ## Get the variable names
+  varlist <- sort(unique(all.names(parse(text=fn), functions=FALSE)))
+  if (missing(vars)) {
+    vars <- varlist
+  } else {
+    if (any(!vars %in% varlist)) {
+      stop("Some of \"vars\" do not agree with the names in \"fn\".\n")
     }
+  }
+  
+  ##
+  if (missing(Covvars)) {
+    ## Variance covariance matrix of x
+    Covvars <- outer(vars, vars, function(y, z) paste0(Cov.name, y, z))
+    metaSEM::Diag(Covvars) <- paste0(Var.name, vars)
+    ## Make it symmetric
+    Covvars <- metaSEM::vec2symMat(OpenMx::vech(Covvars))
+    Covvars.S <- caracas::as_sym(Covvars)
+  } else {
+    Covvars.S <- caracas::as_sym(Covvars)
+  }
 
-    ##
-    if (missing(Covvars)) {
-        ## Variance covariance matrix of x
-        Covvars <- outer(vars, vars, function(y, z) paste0(Cov.name, y, z))
-        metaSEM::Diag(Covvars) <- paste0(Var.name, vars)
-        ## Make it symmetric
-        Covvars <- metaSEM::vec2symMat(OpenMx::vech(Covvars))
-        Covvars.S <- caracas::as_sym(Covvars)
-    } else {
-        Covvars.S <- caracas::as_sym(Covvars)
-    }
+  ## Jacobian matrix
+  Jmatrix <- caracas::jacobian(fn.S, vars)
 
-    ## Jacobian matrix
-    Jmatrix <- caracas::jacobian(fn.S, vars)
+  Covfn <- Jmatrix %*% Covvars.S %*% t(Jmatrix)
+  
+  if (simplify) {Covfn <- caracas::simplify(Covfn)}
+  
+  Covfn <- caracas::as_character_matrix(Covfn)
+  dimnames(Covfn) <- list(fn.names, fn.names)
+  Covvars <- as.matrix(Covvars)
+  dimnames(Covvars) <- list(vars, vars)
 
-    Covfn <- Jmatrix %*% Covvars.S %*% t(Jmatrix)
+  Jmatrix <- caracas::as_character_matrix(Jmatrix)
+  dimnames(Jmatrix) <- list(fn.names, vars)
 
-    if (simplify) {Covfn <- caracas::simplify(Covfn)}
-
-    Covfn <- caracas::as_character_matrix(Covfn)
-    dimnames(Covfn) <- list(fn.names, fn.names)
-    Covvars <- as.matrix(Covvars)
-    dimnames(Covvars) <- list(vars, vars)
-
-    Jmatrix <- caracas::as_character_matrix(Jmatrix)
-    dimnames(Jmatrix) <- list(fn.names, vars)
-
-    list(fn=fn, Covfn=Covfn, vars=vars, Covvars=Covvars, Jmatrix=Jmatrix)
+  list(fn=fn, Covfn=Covfn, vars=vars, Covvars=Covvars, Jmatrix=Jmatrix)
 }
 
