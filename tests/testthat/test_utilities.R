@@ -24,20 +24,21 @@ test_that("impliedS() works correctly", {
                                   .Dim = c(3L, 3L),
                                   .Dimnames = list(c("y", "m", "x"),
                                                    c("y", "m", "x"))),
-                mu = structure(c(0, 0, 0),
+                Mu = structure(c(0, 0, 0),
                                .Dim = c(1L, 3L),
                                .Dimnames = list("1", c("y", "m", "x"))),
                 corr = TRUE)
-    R1b <- list(Sigma = structure(c("EvarmE *b^2 + IvaryI  + (a_a*b + c)^2", 
-                                    "EvarmE *b + a_a*(a_a*b + c)", "a_a*b + c",
-                                    "EvarmE *b + a_a*(a_a*b + c)", 
-                                    "EvarmE  + a_a^2", "a_a", "a_a*b + c", "a_a", "1"),
+    R1b <- list(Sigma = structure(c("IvaryI + EvarmE*b^2 + (a_a*b + c)^2", 
+                                    "a_a*(a_a*b + c) + EvarmE*b", "a_a*b + c",
+                                    "a_a*(a_a*b + c) + EvarmE*b", 
+                                    "a_a^2 + EvarmE", "a_a", "a_a*b + c", "a_a", "1"),
                                   dim = c(3L, 3L),
                                   dimnames = list(c("y", "m", "x"), c("y", "m", "x"))),
-                mu = structure(c("b*m0 + b_0 + x0*(a_a*b + c)", "a_a*x0 + m0", "x0"),
+                Mu = structure(c("b*m0 + b_0 + x0*(a_a*b + c)", "a_a*x0 + m0", "x0"),
                                dim = c(1L, 3L), dimnames = list("1", c("y", "m", "x"))),
                 corr = FALSE)
 
-    expect_identical(S1a, R1a)
-    expect_identical(S1b, R1b)
+    expect_identical(S1a$Sigma, R1a$Sigma)
+    expect_identical(S1b$Sigma, R1b$Sigma)
+    expect_identical(S1b$Mu, R1b$Mu)
 })
