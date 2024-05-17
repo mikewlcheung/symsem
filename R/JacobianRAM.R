@@ -14,7 +14,8 @@
 #' @author Mike W.-L. Cheung <mikewlcheung@@nus.edu.sg>
 #' @export
 #' @examples
-#'
+#' \dontrun{
+#' 
 #' #### A mediation model
 #' model1 <- "y ~ c*x + b*m
 #'            m ~ a*x
@@ -43,7 +44,7 @@
 #'
 #' ## Model-implied correlation matrix
 #' JacobianRAM(RAM2, corr=TRUE)
-#'
+#' }
 JacobianRAM <- function(RAM, vars, corr=FALSE) {
   RAM.old <- RAM
   

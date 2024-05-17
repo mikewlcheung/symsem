@@ -94,7 +94,8 @@ impliedS <- function(RAM, corr=FALSE, replace.constraints=FALSE, convert=TRUE) {
     ## representation in R characters
     Sigma.R <- as_character_matrix(SigmaAll)
         
-    ## Assuming there are at least one free error variance in S including latent variables
+    ## Assuming there are at least one free error variance in S
+    ## including latent variables
     for (i in seq_along(index)) {
       j <- index[i]
       ## Sigma.R[i, i]: 1 + ErrVar - (sigma)
@@ -110,6 +111,13 @@ impliedS <- function(RAM, corr=FALSE, replace.constraints=FALSE, convert=TRUE) {
     }
     SigmaAll <- caracas::as_sym(Sigma.R)
 
+    ## Handle cases when the diagonals are numbers but not 1, e.g., var=4.
+    ## SD: inverse of sds
+    if (any(as_character_matrix(diag(SigmaAll)) != 1)) {
+      SDinv <- caracas::as_diag(1/sqrt(diag(SigmaAll)))
+      SigmaAll <- SDinv %*% SigmaAll %*% SDinv
+    }
+    
     ## Means are zeros as it is a correlation matrix
     Mu <- matrix(0, nrow=1, ncol=nrow(RAM$F))
 

@@ -25,6 +25,7 @@ It computes a symbolic Jacobian matrix of the model-implied covariance (or corre
 SEM using the RAM specification.
 }
 \examples{
+\dontrun{
 
 #### A mediation model
 model1 <- "y ~ c*x + b*m
@@ -54,7 +55,7 @@ JacobianRAM(RAM2, corr=FALSE)
 
 ## Model-implied correlation matrix
 JacobianRAM(RAM2, corr=TRUE)
-
+}
 }
 \author{
 Mike W.-L. Cheung <mikewlcheung@nus.edu.sg>
